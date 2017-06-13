@@ -1,0 +1,17 @@
+version: '3'
+services:
+ mysql:
+  image: mysql:latest
+  container_name: kamailio_mysql
+  ports:
+   - "3306:3306"   
+  environment:
+   - MYSQL_ROOT_PASSWORD=password
+ kamailio:
+  image: linuxmaniac/pkg-kamailio-docker:jessie
+  container_name: kamailio
+  ports: 
+   - "127.0.0.1:5060:5060/udp"
+  depends_on:
+   - mysql
+  entrypoint: tail -f /dev/null
