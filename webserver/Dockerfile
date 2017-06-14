@@ -11,4 +11,4 @@ ADD	apache2.conf /etc/apache2/apache2.conf
 
 RUN	a2enmod rewrite
 
-CMD	["apache2" , "-D FOREGROUND"]
+CMD ["apache2ctl" , "-D" , "FOREGROUND"]

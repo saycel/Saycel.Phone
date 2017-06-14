@@ -15,3 +15,10 @@ services:
   depends_on:
    - mysql
   entrypoint: tail -f /dev/null
+ apache2:
+  build: ./webserver
+  image: webserver:v1.0
+  container_name: apache2_webserver
+  ports:
+   - "80:80"
+   - "443:443"
