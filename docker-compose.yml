@@ -4,9 +4,7 @@ services:
   image: mysql:latest
   container_name: kamailio_mysql
   ports:
-   - "3306:3306"   
-  environment:
-   - MYSQL_ROOT_PASSWORD=password
+   - "3306:3306"
  kamailio:
   image: linuxmaniac/pkg-kamailio-docker:jessie
   container_name: kamailio
@@ -20,5 +18,21 @@ services:
   image: webserver:v1.0
   container_name: apache2_webserver
   ports:
-   - "80:80"
-   - "443:443"
+   - "80"
+   - "443"
+  volumes:
+   - /etc/letsencrypt:/etc/letsencrypt
+   - /var/lib/letsencrypt:/var/lib/letsencrypt
+  depends_on:
+   - certbot
+ certbot:
+  image: certbot/certbot
+  container_name: certbot
+  ports:
+   - "80"
+   - "443"
+  volumes:
+   - /etc/letsencrypt:/etc/letsencrypt
+   - /var/lib/letsencrypt:/var/lib/letsencrypt
+  entrypoint: ""
+  command: certbot auth -n --standalone -d ${DOMAIN} --agree-tos --email ${DOMAIN_EMAIL}

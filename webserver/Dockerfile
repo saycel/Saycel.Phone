@@ -9,6 +9,7 @@ ADD	000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
 ADD	apache2.conf /etc/apache2/apache2.conf
 
-RUN	a2enmod rewrite
+RUN	a2enmod rewrite &&\
+	sed -i "s/rhizortc.specialstories.org/$DOMAIN/g" /etc/apache2/sites-enabled/000-default.conf
 
 CMD ["apache2ctl" , "-D" , "FOREGROUND"]
