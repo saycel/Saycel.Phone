@@ -5,14 +5,25 @@ services:
   container_name: kamailio_mysql
   ports:
    - "3306:3306"
+  env_file:
+   - .env
  kamailio:
   image: linuxmaniac/pkg-kamailio-docker:jessie
   container_name: kamailio
   ports: 
    - "127.0.0.1:5060:5060/udp"
+  env_file:
+   - .env
   depends_on:
    - mysql
   entrypoint: tail -f /dev/null
+ nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
  apache2:
   build: ./webserver
   image: webserver:v1.0
@@ -23,6 +34,8 @@ services:
   volumes:
    - /etc/letsencrypt:/etc/letsencrypt
    - /var/lib/letsencrypt:/var/lib/letsencrypt
+  environment:
+      - VIRTUAL_HOST=whoami.local
   depends_on:
    - certbot
  certbot:
@@ -31,6 +44,8 @@ services:
   ports:
    - "80"
    - "443"
+  environment:
+   - VIRTUAL_HOST=whoami2.local
   volumes:
    - /etc/letsencrypt:/etc/letsencrypt
    - /var/lib/letsencrypt:/var/lib/letsencrypt
