@@ -18,12 +18,13 @@ services:
    - mysql
   entrypoint: tail -f /dev/null
  nginx-proxy:
-    image: jwilder/nginx-proxy
-    container_name: nginx-proxy
-    ports:
-      - "80:80"
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+  image: jwilder/nginx-proxy
+  container_name: nginx-proxy
+  ports:
+   - "80:80"
+   - "443:443"
+  volumes:
+   - /var/run/docker.sock:/tmp/docker.sock:ro
  apache2:
   build: ./webserver
   image: webserver:v1.0
@@ -35,7 +36,7 @@ services:
    - /etc/letsencrypt:/etc/letsencrypt
    - /var/lib/letsencrypt:/var/lib/letsencrypt
   environment:
-      - VIRTUAL_HOST=whoami.local
+   - VIRTUAL_HOST=${DOMAIN}
   depends_on:
    - certbot
  certbot:
