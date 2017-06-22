@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
  mysql:
   image: mysql:latest
@@ -24,7 +24,20 @@ services:
    - "80:80"
    - "443:443"
   volumes:
+   - /etc/letsencrypt/certs:/etc/nginx/certs:ro
+   - /etc/nginx/vhost.d
+   - /usr/share/nginx/html
    - /var/run/docker.sock:/tmp/docker.sock:ro
+  labels:
+   - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true
+ nginx-proxy-companion:
+  image: jrcs/letsencrypt-nginx-proxy-companion
+  container_name: nginx-proxy-companion
+  volumes:
+   - /etc/letsencrypt/certs:/etc/nginx/certs:rw
+   - /var/run/docker.sock:/var/run/docker.sock:ro
+  volumes_from:
+   - nginx-proxy
  apache2:
   build: ./webserver
   image: webserver:v1.0
@@ -32,23 +45,5 @@ services:
   ports:
    - "80"
    - "443"
-  volumes:
-   - /etc/letsencrypt:/etc/letsencrypt
-   - /var/lib/letsencrypt:/var/lib/letsencrypt
   environment:
    - VIRTUAL_HOST=${DOMAIN}
-  depends_on:
-   - certbot
- certbot:
-  image: certbot/certbot
-  container_name: certbot
-  ports:
-   - "80"
-   - "443"
-  environment:
-   - VIRTUAL_HOST=whoami2.local
-  volumes:
-   - /etc/letsencrypt:/etc/letsencrypt
-   - /var/lib/letsencrypt:/var/lib/letsencrypt
-  entrypoint: ""
-  command: certbot auth -n --standalone -d ${DOMAIN} --agree-tos --email ${DOMAIN_EMAIL}
