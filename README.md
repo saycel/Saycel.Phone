@@ -30,6 +30,7 @@ Make sure to switch to the 'testing' branch for now. _Will be
 changed in the future once stable._
 
 > cd Saycel.Phone/
+
 > git checkout testing
 
 
