@@ -22,8 +22,10 @@ RUN	apt-get install -y git &&\
 
 ADD	index.html tryit-jssip/index.html
 
+RUN     sed -i "s/rhizortc.specialstories.org/$DOMAIN/g" /tryit-jssip/index.html
+
 ADD     Phone.jsx tryit-jssip/lib/components/Phone.jsx
-RUN	sed -i "s/rhizortc.specialstories.org/$DOMAIN/g" tryit-jssip/index.html
+
 RUN	cd tryit-jssip &&\
 	npm install -g gulp-cli
 
