@@ -2,13 +2,13 @@
 
 **Uses**
 
-[linuxmaniac/pkg-kamailio-docker] (https://github.com/linuxmaniac/pkg-kamailio-docker)
+[linuxmaniac/pkg-kamailio-docker](https://github.com/linuxmaniac/pkg-kamailio-docker)
 
-[Mysql] (https://hub.docker.com/_/mysql/)
+[Mysql](https://hub.docker.com/_/mysql/)
 
-[jwilder/nginx-proxy] (https://github.com/jwilder/nginx-proxy)
+[jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy)
 
-[Jrcs/docker-letsencrypt-nginx-proxy-companion] (https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
+[Jrcs/docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
 
 
 **Setup**
