@@ -35,5 +35,4 @@ specific information. All these files will contain variables for
 ease of use.
 
 - .env
-- weserver/.env
 - webserver/Dockerfile
