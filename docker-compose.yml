@@ -14,6 +14,8 @@ services:
    - "127.0.0.1:5060:5060/udp"
   env_file:
    - .env
+  volumes:
+   - kamailio:/code:rw
   depends_on:
    - mysql
   entrypoint: tail -f /dev/null
