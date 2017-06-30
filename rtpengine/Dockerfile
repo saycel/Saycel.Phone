@@ -1,18 +1,12 @@
 FROM	debian:8.0
 
 RUN	apt-get update &&\
-	apt-get install -y wget &&\
-	wget https://github.com/sipwise/rtpengine/archive/mr5.1.2.1.tar.gz &&\
-	mkdir rtpengine &&\
-	mv mr5.1.2.1.tar.gz rtpengine/ &&\
-	cd rtpengine/ &&\
-	tar xzvf mr5.1.2.1.tar.gz &&\
-	cd rtpengine-mr5.1.2.1/ &&\
+	apt-get install -y git &&\
+	git clone --recursive https://github.com/sipwise/rtpengine.git rtpengine &&\
+	cd /rtpengine &&\
 	apt-get install -y dpkg-dev &&\
 	./debian/flavors/no_ngcp
 
-#RUN	echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list &&\
-	#apt-get update
 RUN	apt-get install -y \
 	debhelper \
 	iptables-dev \
@@ -28,6 +22,12 @@ RUN	apt-get install -y \
 	libpcap-dev \
 	libpcre3-dev \ 
 	libssl-dev \ 
-#	libxmlrpc-c3-dev \
+	libxmlrpc-core-c3-dev \
 	markdown \
 	zlib1g-dev
+
+RUN	apt-get install -y libmysqlclient-dev libjson-glib-dev &&\
+	cd /rtpengine/ &&\
+	dpkg-buildpackage -rfakeroot -us -uc
+RUN	ls  &&\
+	ls /rtpengine/
