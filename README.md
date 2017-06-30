@@ -1,4 +1,14 @@
 # Saycel.Phone
+_THIS IS A WORK IN PROGRESS_
+_Pull Requests Welcome_
+
+**Intro**
+This is a WebApp for connecting internet enabled devices to community 
+cellular networks. The principle behind this docker implementation is 
+the ability for easy distribution and setup for users. Each docker 
+container is a seperate piece of the application, with each connecting
+to eachother locally over the internal network of the host (localhost).
+
 
 **Uses**
 
@@ -23,7 +33,7 @@ of this application*
 
 To clone this repository
 
-> git clone https://github.com/saycel/Saycel.Phone.git
+> git clone --recursive https://github.com/saycel/Saycel.Phone.git
 
 
 Make sure to switch to the 'testing' branch for now. _Will be 
