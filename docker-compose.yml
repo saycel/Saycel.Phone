@@ -47,6 +47,5 @@ services:
   ports:
    - "80"
    - "443"
-   - "8443:8443"
   environment:
    - VIRTUAL_HOST=${DOMAIN}
