@@ -8,7 +8,8 @@ services:
   env_file:
    - .env
  kamailio:
-  image: linuxmaniac/pkg-kamailio-docker:jessie
+  build: ./kamailio-setup
+  image: linuxmaniac/pkg-kamailio-docker:jessie-modified
   container_name: kamailio
   ports: 
    - "127.0.0.1:5060:5060/udp"

@@ -1,0 +1,3 @@
+deb http://deb.kamailio.org/kamailio50 jessie main
+deb-src http://deb.kamailio.org/kamailio50 jessie main
+
