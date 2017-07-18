@@ -5,9 +5,8 @@ RUN	apt-get update &&\
 	git clone --recursive https://github.com/sipwise/rtpengine.git rtpengine &&\
 	cd /rtpengine &&\
 	apt-get install -y dpkg-dev &&\
-	./debian/flavors/no_ngcp
-
-RUN	apt-get install -y \
+	./debian/flavors/no_ngcp &&\
+	apt-get install -y \
 	debhelper \
 	iptables-dev \
 	libavcodec-dev \
@@ -24,10 +23,13 @@ RUN	apt-get install -y \
 	libssl-dev \ 
 	libxmlrpc-core-c3-dev \
 	markdown \
-	zlib1g-dev
-
-RUN	apt-get install -y libmysqlclient-dev libjson-glib-dev &&\
+	zlib1g-dev &&\
+	apt-get install -y \
+	libmysqlclient-dev \
+	libjson-glib-dev &&\
 	cd /rtpengine/ &&\
 	dpkg-buildpackage -rfakeroot -us -uc
-RUN	ls  &&\
-	ls /rtpengine/
+RUN	ls &&\
+	apt-get install -y dkms &&\
+	dpkg -i *.deb &&\	
+	apt-get -f install
