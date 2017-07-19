@@ -29,7 +29,15 @@ RUN	apt-get update &&\
 	libjson-glib-dev &&\
 	cd /rtpengine/ &&\
 	dpkg-buildpackage -rfakeroot -us -uc
-RUN	ls &&\
-	apt-get install -y dkms &&\
-	dpkg -i *.deb &&\	
+RUN	apt-get install -y dkms \
+	module-assistant \
+	nfs-common \
+	netcat \
+	libbencode-perl \
+	libcrypt-rijndael-perl \
+	libdigest-hmac-perl \
+	libio-socket-inet6-perl \
+	libsocket6-perl
+
+RUN	dpkg -i *.deb &&\	
 	apt-get -f install
