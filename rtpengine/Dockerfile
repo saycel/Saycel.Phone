@@ -41,3 +41,10 @@ RUN	apt-get install -y dkms \
 
 RUN	dpkg -i *.deb &&\	
 	apt-get -f install
+
+ADD	rtpengine.conf /etc/rtpengine/rtpengine.conf
+
+ADD	ngcp-rtpengine-daemon /etc/default/ngcp-rtpengine-daemon
+
+##CMD	/etc/init.d/ngcp-rtpengine-daemon start
+#####   systemctl start ngcp-rtpengine-daemon
