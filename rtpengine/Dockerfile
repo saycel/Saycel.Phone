@@ -38,6 +38,7 @@ RUN	apt-get update &&\
 	libdigest-hmac-perl \
 	libio-socket-inet6-perl \
 	libsocket6-perl &&\
+	cd .. &&\
 	dpkg -i *.deb &&\
 	apt-get -f install
 
