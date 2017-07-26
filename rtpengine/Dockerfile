@@ -19,8 +19,8 @@ RUN	apt-get update &&\
 	libglib2.0-dev \
 	libhiredis-dev \
 	libpcap-dev \
-	libpcre3-dev \ 
-	libssl-dev \ 
+	libpcre3-dev \
+	libssl-dev \
 	libxmlrpc-core-c3-dev \
 	markdown \
 	zlib1g-dev &&\
@@ -28,8 +28,8 @@ RUN	apt-get update &&\
 	libmysqlclient-dev \
 	libjson-glib-dev &&\
 	cd /rtpengine/ &&\
-	dpkg-buildpackage -rfakeroot -us -uc
-RUN	apt-get install -y dkms \
+	dpkg-buildpackage -rfakeroot -us -uc &&\
+	apt-get install -y dkms \
 	module-assistant \
 	nfs-common \
 	netcat \
@@ -37,9 +37,8 @@ RUN	apt-get install -y dkms \
 	libcrypt-rijndael-perl \
 	libdigest-hmac-perl \
 	libio-socket-inet6-perl \
-	libsocket6-perl
-
-RUN	dpkg -i *.deb &&\	
+	libsocket6-perl &&\
+	dpkg -i *.deb &&\
 	apt-get -f install
 
 ADD	rtpengine.conf /etc/rtpengine/rtpengine.conf

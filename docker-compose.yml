@@ -50,3 +50,8 @@ services:
    - "443"
   environment:
    - VIRTUAL_HOST=${DOMAIN}
+ rtpengine:
+  build: ./rtpengine
+  image: rtpengine:v1.0
+  container_name: rtpengine
+#  ports:
