@@ -1,5 +1,7 @@
 FROM	debian:8.0
 
+ADD	policy-rc.d /usr/sbin/policy-rc.d
+
 RUN	apt-get update &&\
 	apt-get install -y git &&\
 	git clone --recursive https://github.com/sipwise/rtpengine.git rtpengine &&\
