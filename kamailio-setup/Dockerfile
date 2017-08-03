@@ -18,7 +18,10 @@ RUN	apt-get update &&\
 	kamailio-mysql-modules \
 	kamailio-presence-modules \
 	kamailio-tls-modules \
-	kamailio-websocket-modules
+	kamailio-websocket-modules \
+	kamailio-sctp-modules \
+	kamailio-outbound-modules \
+	kamailio-extra-modules
 
 ADD	kamctlrc /etc/kamailio/kamctlrc
 
