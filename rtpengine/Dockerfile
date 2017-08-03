@@ -2,6 +2,8 @@ FROM	debian:8.0
 
 ADD	policy-rc.d /usr/sbin/policy-rc.d
 
+ADD	run.sh /run.sh
+
 RUN	apt-get update &&\
 	apt-get install -y git &&\
 	git clone --recursive https://github.com/sipwise/rtpengine.git rtpengine &&\
@@ -48,7 +50,4 @@ ADD	rtpengine.conf /etc/rtpengine/rtpengine.conf
 
 ADD	ngcp-rtpengine-daemon /etc/default/ngcp-rtpengine-daemon
 
-CMD	service ngcp-rtpengine-daemon start && tail -f /dev/null
-
-##CMD	/etc/init.d/ngcp-rtpengine-daemon start
-#####   systemctl start ngcp-rtpengine-daemon
+ENTRYPOINT	run.sh
