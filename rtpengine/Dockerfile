@@ -2,7 +2,7 @@ FROM	debian:8.0
 
 ADD	policy-rc.d /usr/sbin/policy-rc.d
 
-ADD	run.sh /run.sh
+ADD	run.sh /
 
 RUN	apt-get update &&\
 	apt-get install -y git &&\
@@ -50,4 +50,4 @@ ADD	rtpengine.conf /etc/rtpengine/rtpengine.conf
 
 ADD	ngcp-rtpengine-daemon /etc/default/ngcp-rtpengine-daemon
 
-ENTRYPOINT	run.sh
+ENTRYPOINT	["/run.sh"]
