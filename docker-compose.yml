@@ -54,4 +54,5 @@ services:
   build: ./rtpengine
   image: rtpengine:v1.0
   container_name: rtpengine
-#  ports:
+  ports:
+   - "2223:2223/udp"
