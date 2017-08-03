@@ -6,7 +6,7 @@ ADD	run.sh /
 
 RUN	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com \ 
 	0xfb40d3e6508ea4c8 &&\
-	chmod +x ./runsh
+	chmod +x ./run.sh
 
 ADD	kamailio.list /etc/apt/sources.list.d/kamailio.list
 
