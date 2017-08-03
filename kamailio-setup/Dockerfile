@@ -26,6 +26,8 @@ ADD	kamailio.cfg /etc/default/kamailio.cfg
 
 ADD	kamailio /etc/default/kamailio
 
+ADD	tls.cfg /etc/kamailio/tls.cfg
+
 RUN	sed -i "s/rhizortc.specialstories.org/$DOMAIN/g" /etc/kamailio/*
 
 ENTRYPOINT	["/run.sh"]

@@ -17,6 +17,7 @@ services:
    - .env
   volumes:
    - ./kamailio:/code:rw
+   - /etc/letsencrypt/certs:/etc/letsencrypt/live:ro
   depends_on:
    - mysql
  nginx-proxy:
