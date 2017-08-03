@@ -5,7 +5,8 @@ ENV	DOMAIN rhizortc.specialstories.org
 ADD	run.sh /
 
 RUN	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com \ 
-	0xfb40d3e6508ea4c8
+	0xfb40d3e6508ea4c8 &&\
+	chmod +x ./runsh
 
 ADD	kamailio.list /etc/apt/sources.list.d/kamailio.list
 

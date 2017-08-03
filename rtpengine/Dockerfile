@@ -4,7 +4,8 @@ ADD	policy-rc.d /usr/sbin/policy-rc.d
 
 ADD	run.sh /
 
-RUN	apt-get update &&\
+RUN	chmod +x ./run.sh &&\
+	apt-get update &&\
 	apt-get install -y git &&\
 	git clone --recursive https://github.com/sipwise/rtpengine.git rtpengine &&\
 	cd /rtpengine &&\
