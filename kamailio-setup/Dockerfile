@@ -1,5 +1,7 @@
 FROM	linuxmaniac/pkg-kamailio-docker:jessie
 
+ENV	DOMAIN rhizortc.specialstories.org
+
 RUN	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com \ 
 	0xfb40d3e6508ea4c8
 
@@ -21,4 +23,5 @@ ADD	kamailio.cfg /etc/default/kamailio.cfg
 
 ADD	kamailio /etc/default/kamailio
 
+RUN	sed -i "s/rhizortc.specialstories.org/$DOMAIN/g" /etc/kamailio/*
 CMD	bash
