@@ -19,7 +19,6 @@ services:
    - ./kamailio:/code:rw
   depends_on:
    - mysql
-  entrypoint: tail -f /dev/null
  nginx-proxy:
   image: jwilder/nginx-proxy
   container_name: nginx-proxy
