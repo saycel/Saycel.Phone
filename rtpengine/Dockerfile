@@ -48,5 +48,7 @@ ADD	rtpengine.conf /etc/rtpengine/rtpengine.conf
 
 ADD	ngcp-rtpengine-daemon /etc/default/ngcp-rtpengine-daemon
 
+CMD	service ngcp-rtpengine-daemon start && tail -f /dev/null
+
 ##CMD	/etc/init.d/ngcp-rtpengine-daemon start
 #####   systemctl start ngcp-rtpengine-daemon
