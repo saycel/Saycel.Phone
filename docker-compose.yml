@@ -3,6 +3,7 @@ services:
  mysql:
   image: mysql:latest
   container_name: kamailio_mysql
+  hostname: kamailio_mysql
   ports:
    - "3306:3306"
   env_file:
@@ -11,6 +12,7 @@ services:
   build: ./kamailio-setup
   image: linuxmaniac/pkg-kamailio-docker:jessie-modified
   container_name: kamailio
+  hostname: kamailio
   ports: 
    - "127.0.0.1:5060:5060/udp"
   env_file:
@@ -23,6 +25,7 @@ services:
  nginx-proxy:
   image: jwilder/nginx-proxy
   container_name: nginx-proxy
+  hostname: nginx-proxy
   ports:
    - "80:80"
    - "443:443"
@@ -36,6 +39,7 @@ services:
  nginx-proxy-companion:
   image: jrcs/letsencrypt-nginx-proxy-companion
   container_name: nginx-proxy-companion
+  hostname: nginx-proxy-companion
   volumes:
    - /etc/letsencrypt/certs:/etc/nginx/certs:rw
    - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -45,6 +49,7 @@ services:
   build: ./webserver
   image: webserver:v1.0
   container_name: apache2_webserver
+  hostname: apache2_webserver
   ports:
    - "80"
    - "443"
@@ -54,5 +59,6 @@ services:
   build: ./rtpengine
   image: rtpengine:v1.0
   container_name: rtpengine
+  hostname: rtpengine
   ports:
    - "2223:2223/udp"
