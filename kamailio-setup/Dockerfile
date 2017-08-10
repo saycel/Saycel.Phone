@@ -25,7 +25,7 @@ RUN	apt-get update &&\
 
 ADD	kamctlrc /etc/kamailio/kamctlrc
 
-ADD	kamailio.cfg /etc/default/kamailio.cfg
+ADD	kamailio.cfg /etc/kamailio/kamailio.cfg
 
 ADD	kamailio /etc/default/kamailio
 
