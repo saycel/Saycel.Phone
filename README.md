@@ -14,8 +14,6 @@ to eachother locally over the internal network of the host (localhost).
 
 **Uses**
 
-[linuxmaniac/pkg-kamailio-docker](https://github.com/linuxmaniac/pkg-kamailio-docker)
-
 [Mysql](https://hub.docker.com/_/mysql/)
 
 [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy)

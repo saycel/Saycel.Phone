@@ -1,4 +1,4 @@
-FROM	linuxmaniac/pkg-kamailio-docker:jessie
+FROM	debian:8.0
 
 ENV	DOMAIN rhizortc.specialstories.org
 
