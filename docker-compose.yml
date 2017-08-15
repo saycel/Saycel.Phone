@@ -10,7 +10,7 @@ services:
    - .env
  kamailio:
   build: ./kamailio-setup
-  image: linuxmaniac/pkg-kamailio-docker:jessie-modified
+  image: saycel/kamailio:v1.0
   container_name: kamailio
   hostname: kamailio
   ports: 
@@ -22,7 +22,6 @@ services:
   env_file:
    - .env
   volumes:
-   - ./kamailio:/code:rw
    - /etc/letsencrypt/certs:/etc/letsencrypt/live:ro
   depends_on:
    - mysql
