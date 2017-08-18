@@ -1,7 +1,5 @@
 FROM	debian:8.0
 
-ENV	DOMAIN rhizortc.specialstories.org
-
 ADD	run.sh /
 
 RUN	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com \ 
@@ -30,7 +28,5 @@ ADD	kamailio.cfg /etc/kamailio/kamailio.cfg
 ADD	kamailio /etc/default/kamailio
 
 ADD	tls.cfg /etc/kamailio/tls.cfg
-
-RUN	sed -i "s/rhizortc.specialstories.org/$DOMAIN/g" /etc/kamailio/*
 
 ENTRYPOINT	["/run.sh"]
