@@ -50,6 +50,5 @@ ease of use.
 
 - .env
 - webserver/Dockerfile
-- kamailio-setup/Dockerfile
 - docker-compose.yml
 
