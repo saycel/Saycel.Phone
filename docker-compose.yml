@@ -60,7 +60,7 @@ services:
    - VIRTUAL_HOST=${DOMAIN}
  rtpengine:
   build: ./rtpengine
-  image: rtpengine:v1.0
+  image: saycel/rtpengine:latest
   container_name: rtpengine
   hostname: rtpengine
   ports:
