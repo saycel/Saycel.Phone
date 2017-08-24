@@ -1,25 +1,4 @@
-FROM	debian:8.0
-
-ADD	run.sh /
-
-RUN	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com \ 
-	0xfb40d3e6508ea4c8 &&\
-	chmod +x ./run.sh
-
-ADD	kamailio.list /etc/apt/sources.list.d/kamailio.list
-
-ADD	policy-rc.d /usr/sbin/policy-rc.d
-
-RUN	apt-get update &&\
-	apt-get install -y \
-	kamailio \
-	kamailio-mysql-modules \
-	kamailio-presence-modules \
-	kamailio-tls-modules \
-	kamailio-websocket-modules \
-	kamailio-sctp-modules \
-	kamailio-outbound-modules \
-	kamailio-extra-modules
+FROM	saycel/kamailio:latest
 
 ADD	kamctlrc /etc/kamailio/kamctlrc
 
