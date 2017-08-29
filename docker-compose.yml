@@ -10,7 +10,7 @@ services:
    - .env
  kamailio:
   build: ./kamailio-setup
-  image: saycel/kamailio:v1.0
+  image: saycel/kamailio:latest
   container_name: kamailio
   hostname: kamailio
   ports: 
