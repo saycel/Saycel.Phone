@@ -52,3 +52,9 @@ ease of use.
 - webserver/Dockerfile
 - docker-compose.yml
 
+You will need to run some commands from within the kamailio 
+docker container. They are posted below:
+
+- docker exec -ti kamailio bash
+- kamdbctl create
+- ./permissions.sh
