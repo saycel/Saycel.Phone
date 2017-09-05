@@ -58,3 +58,11 @@ docker container. They are posted below:
 - docker exec -ti kamailio bash
 - kamdbctl create
 - ./permissions.sh
+- kamctl add webrtc verysecret
+- service kamailio start
+
+exit the container by pressing the following on your keyboard:
+
+- Ctrl + P + Q
+(Control + P key the press Q key while still holding Control.)
+
