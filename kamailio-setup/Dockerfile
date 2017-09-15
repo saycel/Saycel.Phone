@@ -10,6 +10,9 @@ ADD	tls.cfg /etc/kamailio/tls.cfg
 
 ADD	permissions.sh /
 
-RUN	chmod +x /permissions.sh
+ADD	run.sh
+
+RUN	chmod +x /permissions.sh &&\
+	chmod +x /run.sh
 
 ENTRYPOINT	["/run.sh"]
