@@ -12,8 +12,8 @@ sed -i "s/127.0.0.1/$rtpengine_ip_2/g" /etc/kamailio/*
 while ! mysqladmin ping -h "kamailio_mysql" --silent; do
     sleep 1
 done
-kamdbctl create <<< $MYSQL_ROOT_PASSWORD
-./permissions
-kamctl add webrtc verysecret
+kamdbctl create <<< $MYSQL_ROOT_PASSWORD & wait
+./permissions.sh & wait
+kamctl add webrtc verysecret & wait
 service kamailio start
 tail -f /dev/null
