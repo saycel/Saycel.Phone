@@ -52,17 +52,6 @@ ease of use.
 - webserver/Dockerfile
 - docker-compose.yml
 
-You will need to run some commands from within the kamailio 
-docker container. They are posted below:
+To executed the project build and deployment run the following command:
 
-- docker exec -ti kamailio bash
-- kamdbctl create
-- ./permissions.sh
-- kamctl add webrtc verysecret
-- service kamailio start
-
-exit the container by pressing the following on your keyboard:
-
-- Ctrl + P + Q
-(Control + P key the press Q key while still holding Control.)
-
+> docker-compose up -d
