@@ -65,4 +65,4 @@ services:
   hostname: rtpengine
   ports:
    - "2223:2223/udp"
-   - "7722:7722/udp"
+   - "30000-50000:30000-50000/udp"
