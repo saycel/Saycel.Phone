@@ -3,6 +3,9 @@ _THIS IS A WORK IN PROGRESS_
 
 _Pull Requests Welcome_
 
+_Branch v1.0 is now available_
+> git checkout v1.0
+
 **Intro**
 
 This is a WebApp for connecting internet enabled devices to community 
