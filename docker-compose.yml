@@ -58,11 +58,3 @@ services:
    - "443"
   environment:
    - VIRTUAL_HOST=${DOMAIN}
- rtpengine:
-  build: ./rtpengine
-  image: saycel/rtpengine:latest
-  container_name: rtpengine
-  hostname: rtpengine
-  ports:
-   - "2223:2223/udp"
-   - "30000-31000:30000-31000/udp"

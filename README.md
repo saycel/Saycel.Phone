@@ -1,16 +1,16 @@
 # Saycel.Phone
-_THIS IS A WORK IN PROGRESS_
+_THIS IS A STABLE 1.0 branch_
 
 _Pull Requests Welcome_
 
 **Intro**
 
-This is a WebApp for connecting internet enabled devices to community 
-cellular networks. The principle behind this docker implementation is 
-the ability for easy distribution and setup for users. Each docker 
-container is a seperate piece of the application, with each connecting
-to eachother locally over the internal network of the host (localhost).
-
+This is v1.0 of the application on the MASTER branch. This branch
+allows you to make SIP calls from your domain. The principle behind 
+this docker implementation is the ability for easy distribution and 
+setup for users. Each docker container is a seperate piece of the
+application, with each connecting to eachother locally over the
+internal network of the host (localhost).
 
 **Uses**
 
@@ -41,7 +41,7 @@ changed in the future once stable._
 
 > cd Saycel.Phone/
 
-> git checkout testing
+> git checkout v1.0
 
 
 You will need to modify the following files with your Domain 
