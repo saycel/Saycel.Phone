@@ -3,7 +3,7 @@ _THIS IS A WORK IN PROGRESS_
 
 _Pull Requests Welcome_
 
-_Branch v1.0 is now available_
+**Branch v1.0 is now available**
 > git checkout v1.0
 
 **Intro**
