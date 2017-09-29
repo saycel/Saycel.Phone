@@ -1,0 +1,34 @@
+    1  ls
+    2  apt-get update
+    3  apt-get upgrade
+    4  apt-get install apache
+    5  apt-get install apache2
+    6  apt-get install python-certbot-apache -t jessie-backports
+    7  vi /etc/apt/sources.list
+    8  apt-get update
+    9  apt-get install python-certbot-apache -t jessie-backports
+   10  vi /etc/apache2/sites-enabled/000-default.conf 
+   11  apache2ctl reload
+   12  apache2ctl -k graceful
+   13  vi /etc/apache2/sites-enabled/000-default.conf 
+   14  apache2ctl -k graceful
+   15  vi /etc/apache2/apache2.conf 
+   16  hostname
+   17  nmtui
+   18  apt-get install nmtui
+   19  apt-get install NetworkManager-tui
+   20  apt-cache search Network
+   21  apt-cache search NetworkManager
+   22  apt-cache search network-maanger
+   23  apt-cache search network-manager
+   24  ps aux |grep net
+   25  ps aux |grep nm
+   26  ps auxf
+   27  vi /etc/hostname 
+   28  hostname
+   29  hostname --help
+   30  hostname  -F /etc/hostname 
+   31  hostname
+   32  apache2ctl -k graceful
+   33  certbot --apache
+   34  history >hist

@@ -1,0 +1,60 @@
+version: '2'
+services:
+ mysql:
+  image: mysql:latest
+  container_name: kamailio_mysql
+  hostname: kamailio_mysql
+  ports:
+   - "3306:3306"
+  env_file:
+   - .env
+ kamailio:
+  build: ./kamailio-setup
+  image: saycel/kamailio:latest
+  container_name: kamailio
+  hostname: kamailio
+  ports: 
+   - "127.0.0.1:5060:5060/udp"
+   - "127.0.0.1:5060:5060/tcp"
+   - "127.0.0.1:880:880/tcp"
+   - "5061:5061"
+   - "8443:8443"
+  env_file:
+   - .env
+  volumes:
+   - /etc/letsencrypt/certs:/etc/letsencrypt/live:ro
+  depends_on:
+   - mysql
+ nginx-proxy:
+  image: jwilder/nginx-proxy
+  container_name: nginx-proxy
+  hostname: nginx-proxy
+  ports:
+   - "80:80"
+   - "443:443"
+  volumes:
+   - /etc/letsencrypt/certs:/etc/nginx/certs:ro
+   - /etc/nginx/vhost.d
+   - /usr/share/nginx/html
+   - /var/run/docker.sock:/tmp/docker.sock:ro
+  labels:
+   - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true
+ nginx-proxy-companion:
+  image: jrcs/letsencrypt-nginx-proxy-companion
+  container_name: nginx-proxy-companion
+  hostname: nginx-proxy-companion
+  volumes:
+   - /etc/letsencrypt/certs:/etc/nginx/certs:rw
+   - /var/run/docker.sock:/var/run/docker.sock:ro
+  volumes_from:
+   - nginx-proxy
+ apache2:
+  build: ./webserver
+  image: webserver:v1.0
+  container_name: apache2_webserver
+  hostname: apache2_webserver
+  ports:
+   - "80"
+   - "443"
+  environment:
+   - VIRTUAL_HOST=${DOMAIN}

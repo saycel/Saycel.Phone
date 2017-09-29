@@ -1,0 +1,66 @@
+    1  ls
+    2  apt-get update
+    3  apt-get upgrade
+    4  apt-get install apache
+    5  apt-get install apache2
+    6  apt-get install python-certbot-apache -t jessie-backports
+    7  vi /etc/apt/sources.list
+    8  apt-get update
+    9  apt-get install python-certbot-apache -t jessie-backports
+   10  vi /etc/apache2/sites-enabled/000-default.conf 
+   11  apache2ctl reload
+   12  apache2ctl -k graceful
+   13  vi /etc/apache2/sites-enabled/000-default.conf 
+   14  apache2ctl -k graceful
+   15  vi /etc/apache2/apache2.conf 
+   16  hostname
+   17  nmtui
+   18  apt-get install nmtui
+   19  apt-get install NetworkManager-tui
+   20  apt-cache search Network
+   21  apt-cache search NetworkManager
+   22  apt-cache search network-maanger
+   23  apt-cache search network-manager
+   24  ps aux |grep net
+   25  ps aux |grep nm
+   26  ps auxf
+   27  vi /etc/hostname 
+   28  hostname
+   29  hostname --help
+   30  hostname  -F /etc/hostname 
+   31  hostname
+   32  apache2ctl -k graceful
+   33  certbot --apache
+   34  history >hist
+   35  less hist 
+   36  ls
+   37  apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xfb40d3e6508ea4c8
+   38  vi /etc/apt/sources.list.d/kamailio.list
+   39  apt-get update
+   40  iptables -L
+   41  ls
+   42  apt-cache search kamailio
+   43  #apt-get install mariadb kamailio kamailio-extra-modules kamailio-utils-modules kamailio-mysql-modules 
+   44  apt-get install mysql-server
+   45  apt-get install mariadb-server
+   46  apt install kamailio kamailio-mysql-modules kamailio-websocket-modules
+   47  vi /etc/kamailio/kamctlrc 
+   48  vi /etc/kamailio/kamailio.cfg 
+   49  kamdbctl create
+   50  vi /etc/default/kamailio 
+   51  systemctl start kamailio
+   52  ps aux |grep kama
+   53  netstat -tlupan
+   54  kamctl --help
+   55  kamctl add stefan geheim
+   56  ngrep
+   57  apt-get install ngrep
+   58  apt-get install sngrep
+   59  echo "deb http://packages.irontec.com/debian jessie main" >/etc/apt/sources.list.d/sngrep.list
+   60  apt-get update
+   61  wget http://packages.irontec.com/public.key -q -O - | apt-key add -
+   62  apt-get update
+   63  apt-get install sngrep
+   64  ip a
+   65  sngrep -d eth0
+   66  history >hist1

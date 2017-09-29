@@ -1,4 +1,5 @@
 # Saycel.Phone
+
 _THIS IS A WORK IN PROGRESS_
 
 _Pull Requests Welcome_
@@ -55,3 +56,8 @@ ease of use.
 
 - .env
 - webserver/Dockerfile
+
+To execute the project build and deployment run the following command:
+
+> docker-compose up -d
+

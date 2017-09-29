@@ -1,0 +1,355 @@
+    1  ls
+    2  apt-get update
+    3  apt-get upgrade
+    4  apt-get install apache
+    5  apt-get install apache2
+    6  apt-get install python-certbot-apache -t jessie-backports
+    7  vi /etc/apt/sources.list
+    8  apt-get update
+    9  apt-get install python-certbot-apache -t jessie-backports
+   10  vi /etc/apache2/sites-enabled/000-default.conf 
+   11  apache2ctl reload
+   12  apache2ctl -k graceful
+   13  vi /etc/apache2/sites-enabled/000-default.conf 
+   14  apache2ctl -k graceful
+   15  vi /etc/apache2/apache2.conf 
+   16  hostname
+   17  nmtui
+   18  apt-get install nmtui
+   19  apt-get install NetworkManager-tui
+   20  apt-cache search Network
+   21  apt-cache search NetworkManager
+   22  apt-cache search network-maanger
+   23  apt-cache search network-manager
+   24  ps aux |grep net
+   25  ps aux |grep nm
+   26  ps auxf
+   27  vi /etc/hostname 
+   28  hostname
+   29  hostname --help
+   30  hostname  -F /etc/hostname 
+   31  hostname
+   32  apache2ctl -k graceful
+   33  certbot --apache
+   34  history >hist
+   35  less hist 
+   36  ls
+   37  apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xfb40d3e6508ea4c8
+   38  vi /etc/apt/sources.list.d/kamailio.list
+   39  apt-get update
+   40  iptables -L
+   41  ls
+   42  apt-cache search kamailio
+   43  #apt-get install mariadb kamailio kamailio-extra-modules kamailio-utils-modules kamailio-mysql-modules 
+   44  apt-get install mysql-server
+   45  apt-get install mariadb-server
+   46  apt install kamailio kamailio-mysql-modules kamailio-websocket-modules
+   47  vi /etc/kamailio/kamctlrc 
+   48  vi /etc/kamailio/kamailio.cfg 
+   49  kamdbctl create
+   50  vi /etc/default/kamailio 
+   51  systemctl start kamailio
+   52  ps aux |grep kama
+   53  netstat -tlupan
+   54  kamctl --help
+   55  kamctl add stefan geheim
+   56  ngrep
+   57  apt-get install ngrep
+   58  apt-get install sngrep
+   59  echo "deb http://packages.irontec.com/debian jessie main" >/etc/apt/sources.list.d/sngrep.list
+   60  apt-get update
+   61  wget http://packages.irontec.com/public.key -q -O - | apt-key add -
+   62  apt-get update
+   63  apt-get install sngrep
+   64  ip a
+   65  sngrep -d eth0
+   66  history >hist1
+   67  tail -f /var/log/daemon.log 
+   68  bg
+   69  fg
+   70  vi /etc/kamailio/kamailio.cfg 
+   71  tail -f /var/log/daemon.log 
+   72  bg
+   73  systemctl restart kamailio
+   74  kamdbctl --help
+   75  vi /etc/default/kamailio 
+   76  vi /etc/kamailio/kamailio.cfg 
+   77  jobs
+   78  systemctl restart kamailio
+   79  kamctl add webrtc verysecret
+   80  fg
+   81  ls
+   82  history >hist2
+   83  vi /etc/kamailio/kamailio.cfg 
+   84  systemctl restart kamailio
+   85  vi /etc/kamailio/kamailio.cfg 
+   86  dpkg -l kamailio
+   87  vi /etc/apt/sources.list.d/kamailio.list 
+   88  apt-get update
+   89  apt-get upgrade
+   90  dpkg-reconfigure kamailio
+   91  apt-get -d install
+   92  apt-get -f install
+   93  systemctl stop kamailio.service
+   94  apt-get -f install
+   95  vi /etc/kamailio/kamctlrc
+   96  vi /etc/kamailio/kamailio.cfg
+   97  vi /etc/default/kamailio 
+   98  apt-get -f install
+   99  systemctl status kamailio.service
+  100  systemctl start kamailio
+  101  systemctl restart kamailio
+  102  dpkg -l kamailio-mysql-modules
+  103  dpkg -L kamailio-mysql-modules
+  104  vi /etc/kamailio/kamailio.cfg
+  105  systemctl restart kamailio
+  106  apt-get install kamailio-presence-modules
+  107  systemctl restart kamailio
+  108  apt-get -f install
+  109  ngrep port 5060 -W byline -d any
+  110  ls
+  111  history > hist3
+  112  vi /etc/kamailio/kamailio.cfg
+  113  systemctl restart kamailio
+  114  ngrep port 5060 -W byline -d any
+  115  vi /etc/kamailio/kamailio.cfg
+  116  rm /etc/kamailio/.kamailio.cfg.swp
+  117  vi /etc/kamailio/kamailio.cfg
+  118  apt-cache search kamailio
+  119  apt-cache search kamailio |grep rtp
+  120  dpkg -L kamailio |grep modu
+  121  dpkg -L kamailio |grep modu |grep rtp
+  122  zless /usr/lib/x86_64-linux-gnu/kamailio/modules/rtpengine.so
+  123  zless /usr/share/doc/kamailio/modules/README.rtpengine.gz 
+  124  apt-get install rtpengine
+  125  wget https://github.com/sipwise/rtpengine/archive/mr5.1.2.1.tar.gz
+  126  mkdir rtpengine
+  127  mv mr5.1.2.1.tar.gz rtpengine/
+  128  cd rtpengine/
+  129  ls
+  130  tar xzvf mr5.1.2.1.tar.gz 
+  131  ls
+  132  cd rtpengine-mr5.1.2.1/
+  133  ls
+  134  cd debian/
+  135  ls
+  136  less control
+  137  apt-get install dpkg-dev
+  138  cd ..
+  139  ls
+  140  ./debian/flavors/no_ngcp 
+  141  dpkg-buildpackage -rfakeroot -us -uc
+  142  apt-get install debhelper iptables-dev libavcodec-dev libavfilter-dev libavformat-dev libavresample-dev libavutil-dev libcurl4-openssl-dev libevent-dev libglib2.0-dev libhiredis-dev libpcap-dev libpcre3-dev libssl-dev libxmlrpc-c3-dev markdown zlib1g-dev
+  143  apt-get install debhelper iptables-dev libavcodec-dev libavfilter-dev libavformat-dev libavresample-dev libavutil-dev libcurl4-openssl-dev libevent-dev libglib2.0-dev libhiredis-dev libpcap-dev libpcre3-dev libssl-dev libxmlrpc-core-c3-dev markdown zlib1g-dev
+  144  dpkg-buildpackage -rfakeroot -us -uc
+  145  ls
+  146  cd ..
+  147  ls
+  148  ls *.deb
+  149  ls *.deb -1
+  150  dpkg -i *.deb
+  151  apt-get -f install
+  152  ps aux |grep rtp
+  153  less /etc/rtpengine/rtpengine.sample.conf 
+  154  cp /etc/rtpengine/rtpengine.sample.conf /etc/rtpengine/rtpengine.conf
+  155  vi /etc/rtpengine/rtpengine.conf 
+  156  systemctl start rtpengine
+  157  dpkg -L rtpengine
+  158  ls *.deb
+  159  dpkg -L ngcp-rtpengine
+  160  dpkg -L ngcp-rtpengine-daemon
+  161  vi /etc/default/ngcp-rtpengine-daemon 
+  162  /etc/init.d/ngcp-rtpengine-daemon start
+  163  ps aux |grep rtpengine
+  164  tail /var/log/daemon.log 
+  165  ps auxf
+  166  tail -f /var/log/daemon.log  &
+  167  systemctl start ngcp-rtpengine-daemon
+  168  journalctl 
+  169  journalctl -f &
+  170  systemctl restart ngcp-rtpengine-daemon
+  171  ps aux |grep rtp
+  172  cd /etc/kamailio/
+  173  ls
+  174  ls -l
+  175  mv *old old
+  176  ls
+  177  vi kamailio.cfg 
+  178  less /etc/rtpengine/rtpengine.conf 
+  179  fg
+  180  vi kamailio.cfg 
+  181  systemctl restart kamailio
+  182  ip a
+  183  apt-get install kamailio-tls-modules
+  184  apt-get autoremove
+  185  cd
+  186  ls
+  187  history >hist4
+  188  less hist4
+  189  jobs
+  190  fg 5
+  191  fg 4
+  192  fg 1
+  193  jobs
+  194  vi /etc/kamailio/kamailio.cfg 
+  195  systemctl restart kamailio
+  196  vi /etc/kamailio/kamailio.cfg 
+  197  systemctl restart kamailio
+  198  fg
+  199  systemctl restart kamailio
+  200  fg
+  201  systemctl restart kamailio
+  202  cd /etc/kamailio/
+  203  ls
+  204  vi tls.cfg 
+  205  ls /etc/letsencrypt/
+  206  ls /etc/letsencrypt/live/
+  207  ls /etc/letsencrypt/live/rhizortc.specialstories.org/
+  208  ls /etc/letsencrypt/live/rhizortc.specialstories.org/ -l
+  209  fg
+  210  systemctl restart kamailio
+  211  ls -l /etc/letsencrypt/live/rhizortc.specialstories.org/
+  212  chgrp kamailio  /etc/letsencrypt/live/rhizortc.specialstories.org/fullchain.pem 
+  213  chgrp kamailio  /etc/letsencrypt/live/rhizortc.specialstories.org/privkey.pem 
+  214  systemctl restart kamailio
+  215  ls -l /etc/letsencrypt/live/rhizortc.specialstories.org/
+  216  ps aux |grep apa
+  217  chgrp -R kamailio /etc/letsencrypt/
+  218  chmod -R g=rX /etc/letsencrypt
+  219  systemctl restart kamailio
+  220  netstat -tlupan
+  221  ngrep port 5060 -W byline -d any
+  222  vi kamailio.cfg 
+  223  jobs
+  224  fg 5
+  225  vi 4
+  226  fg 4
+  227  systemctl restart kamailio
+  228  jobs
+  229  vi kamailio
+  230  vi kamailio.cfg 
+  231  systemctl restart kamailio
+  232  netstat -tlupan
+  233  netstat -tlupan |grep kama
+  234  vi kamailio.cfg 
+  235  fg
+  236  systemctl restart kamailio
+  237  vi kamailio.cfg 
+  238  systemctl restart kamailio
+  239  journalctl -f
+  240  apt-get install npm
+  241  cd
+  242  ls
+  243  git clone https://github.com/versatica/tryit-jssip
+  244  apt-get install git
+  245  apt-get install git 
+  246  git clone https://github.com/versatica/tryit-jssip
+  247  ls
+  248  cd tryit-jssip/
+  249  ls
+  250  npm install
+  251  apt-get remove gyp javascript-common libc-ares-dev libc-ares2 libjs-jquery libjs-node-uuid libjs-underscore libv8-3.14-dev libv8-3.14.5 node-abbrev node-ansi node-ansi-color-table node-archy node-async node-block-stream node-combined-stream node-cookie-jar node-delayed-stream
+  252  cd ..
+  253  rm -rf tryit-jssip/
+  254  git clone https://github.com/versatica/tryit-jssip
+  255  curl -sL https://deb.nodesource.com/setup_6.x | bash -
+  256  apt-get install npm
+  257  apt-get install nodejs
+  258  ls
+  259  cd tryit-jssip/
+  260  ls
+  261  npm install
+  262  ls
+  263  history
+  264  cd ..
+  265  ls
+  266  history >hist5
+  267  cd tryit-jssip/
+  268  ls
+  269  npm install -g gulp-cli
+  270  npm install --help
+  271  npm install 
+  272  ls
+  273  vi index.html 
+  274  gulp dev
+  275  ls
+  276  cd out/
+  277  ls
+  278  ls -l
+  279  less index.html 
+  280  ls /var/www/
+  281  ls /var/www/html/
+  282  #cp -r * /var/www/html/
+  283  ls -l /var/www/html/
+  284  cp -r * /var/www/html/
+  285  ls
+  286  cd ..
+  287  ls
+  288  less index.html 
+  289  cd out/
+  290  ls
+  291  less index.html 
+  292  ls resources/
+  293  vi index.html 
+  294  ls resources/js/
+  295  fg
+  296  gulp dev
+  297  ls
+  298  ls -l
+  299  cd ..
+  300  ls
+  301  cd out/
+  302  ls
+  303  ls -l
+  304  date
+  305  cp -r * /var/www/html/
+  306  ls
+  307  vi index.html 
+  308  cd ..
+  309  ls
+  310  vi index.html 
+  311  gulp dev ; pushd out ; cp -r * /var/www/html/ ; popd
+  312  vi index.html 
+  313  gulp dev ; pushd out ; cp -r * /var/www/html/ ; popd
+  314  ls
+  315  vi index.html 
+  316  cd resources/
+  317  ls
+  318  cd js/
+  319  ls
+  320  cd ..
+  321  cd lib/
+  322  ls
+  323  cd ..
+  324  find |grep tryit-js
+  325  ls
+  326  cd resources/
+  327  ls
+  328  cd js
+  329  ls
+  330  less antiglobal.js 
+  331  cd ..
+  332  ls
+  333  cd ..
+  334  ls
+  335  cd lib/
+  336  ls
+  337  ls -l
+  338  less index.jsx 
+  339  cd components/
+  340  ls
+  341  ls -l
+  342  less Dialer.jsx 
+  343  grep Video *
+  344  grep video *
+  345  vi Phone.jsx 
+  346  cd ..
+  347  gulp dev ; pushd out ; cp -r * /var/www/html/ ; popd
+  348  vi /etc/kamailio/kamailio.cfg 
+  349  systemctl restart kamailio
+  350  vi /etc/kamailio/kamailio.cfg 
+  351  systemctl restart kamailio
+  352  cd ..
+  353  ls
+  354  ls -l
+  355  history >hist6
