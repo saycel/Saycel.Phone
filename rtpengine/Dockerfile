@@ -1,0 +1,66 @@
+FROM	debian:8.0
+
+ADD 	policy-rc.d /usr/sbin/policy-rc.d
+
+ADD 	run.sh /
+
+RUN 	chmod +x ./run.sh &&\
+	apt-get update &&\
+	apt-get install -y git &&\
+	git clone --recursive https://github.com/sipwise/rtpengine.git rtpengine &&\
+	cd /rtpengine &&\
+	apt-get install -y dpkg-dev &&\
+	./debian/flavors/no_ngcp &&\
+	apt-get install -y \
+	debhelper \
+	iptables-dev \
+	libavcodec-dev \
+	libavfilter-dev \
+	libavformat-dev \
+	libavresample-dev \
+	libavutil-dev \
+	libcurl4-openssl-dev \
+	libevent-dev \
+	libglib2.0-dev \
+	libhiredis-dev \
+	libpcap-dev \
+	libpcre3-dev \
+	libssl-dev \
+	libxmlrpc-core-c3-dev \
+	markdown \
+	zlib1g-dev &&\
+	apt-get install -y \
+	libmysqlclient-dev \
+	libjson-glib-dev &&\
+	cd /rtpengine/ &&\
+	dpkg-buildpackage -rfakeroot -us -uc &&\
+	apt-get install -y dkms \
+	module-assistant \
+	nfs-common \
+	netcat \
+	libbencode-perl \
+	libcrypt-rijndael-perl \
+	libdigest-hmac-perl \
+	libio-socket-inet6-perl \
+	libsocket6-perl &&\
+	cd .. &&\
+	dpkg -i *.deb &&\
+	apt-get -f install
+
+ENTRYPOINT	["/run.sh"]
+
+
+
+
+
+FROM	saycel/rtpengine:latest
+
+ADD	config-files/rtpengine.conf /etc/rtpengine/rtpengine.conf
+
+ADD	config-files/ngcp-rtpengine-daemon /etc/default/ngcp-rtpengine-daemon
+
+ADD	config-files/run.sh /
+
+RUN	chmod +x /run.sh
+
+ENTRYPOINT	["/run.sh"]

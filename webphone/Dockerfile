@@ -7,11 +7,22 @@ RUN     echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/ap
 	apt-get upgrade -y &&\
 	apt-get install -y apache2 python-certbot-apache -t jessie-backports
 
-ADD	000-default.conf /etc/apache2/sites-enabled/000-default.conf	
+ADD	000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
 ADD	apache2.conf /etc/apache2/apache2.conf
 
+ADD	ports.conf /etc/apache2/ports.conf
+
+ADD	000-default-le-ssl.conf /etc/apache2/sites-enabled/000-default-le-ssl.conf
+
 RUN	a2enmod rewrite &&\
+	a2enmod proxy_http &&\
+	a2enmod proxy_html &&\
+	a2enmod ssl
+
+
+
+	 &&\
 	apt-get install -y curl &&\ 
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - &&\
 	apt-get install -y nodejs git &&\
