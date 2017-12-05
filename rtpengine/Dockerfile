@@ -47,13 +47,6 @@ RUN 	chmod +x ./run.sh &&\
 	dpkg -i *.deb &&\
 	apt-get -f install
 
-ENTRYPOINT	["/run.sh"]
-
-
-
-
-
-FROM	saycel/rtpengine:latest
 
 ADD	config-files/rtpengine.conf /etc/rtpengine/rtpengine.conf
 
