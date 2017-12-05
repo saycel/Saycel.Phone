@@ -16,7 +16,8 @@ RUN 	apt-get update &&\
 	kamailio-websocket-modules \
 	kamailio-sctp-modules \
 	kamailio-outbound-modules \
-	kamailio-extra-modules
+	kamailio-extra-modules \
+	kamailio-utils-modules
 
 ADD	config-files/kamctlrc /etc/kamailio/kamctlrc
 
