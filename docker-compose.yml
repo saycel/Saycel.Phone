@@ -6,8 +6,8 @@ services:
     hostname: kamailio_mysql
     ports:
       - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
+    env_file:
+      - .env
     deploy:
       replicas: 3
       restart_policy:
@@ -27,9 +27,8 @@ services:
       - "127.0.0.1:880:880/tcp"
       - "5061:5061"
       - "8443:8443"
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - DOMAIN=BLANK.com
+    env_file:
+      - .env
     volumes:
       - certs:/etc/letsencrypt/live:ro
     depends_on:
@@ -68,10 +67,29 @@ services:
         limits:
           cpus: "0.2"
           memory: 100M
-      environment:
-        - DOMAIN=BLANK.com
-      depends_on:
-        - webphone-source 
+    env_file:
+      - .env
+    depends_on:
+      - webphone-source 
+
+  webpush:
+    image: saycel/webpush:latest
+    hostname: webpush
+#    ports:
+#      - ""
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+    env_file:
+      - .env
+#    depends_on:
+#      - 
 
 volumes:
- certs:
+  certs:
