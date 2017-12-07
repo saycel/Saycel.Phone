@@ -43,6 +43,17 @@ services:
           cpus: "0.4"
           memory: 50M
 
+  rtpengine:
+    image: saycel/rtpengine:latest
+#    ports:
+#      - ""
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+
   webphone-source:
     image: debian:8.0
     deploy:
