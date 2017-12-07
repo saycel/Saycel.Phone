@@ -24,22 +24,22 @@ DBHOST=mysql
 DBPORT=3306
 
 ## database name (for ORACLE this is TNS name)
-DBNAME=kamailio
+#DBNAME=kamailio
 
 # database path used by dbtext, db_berkeley or sqlite
 # DB_PATH="/usr/local/etc/kamailio/dbtext"
 
 ## database read/write user
-DBRWUSER="kamailio"
+#DBRWUSER="kamailio"
 
 ## password for database read/write user
-DBRWPW="kamailiorw"
+#DBRWPW="kamailiorw"
 
 ## database read only user
-DBROUSER="kamailioro"
+#DBROUSER="kamailioro"
 
 ## password for database read only user
-DBROPW="kamailioro"
+#DBROPW="kamailioro"
 
 ## database access host (from where is kamctl used)
 # DBACCESSHOST=192.168.0.1
