@@ -9,7 +9,7 @@ services:
     env_file:
       - .env
     deploy:
-      replicas: 3
+      mode: global
       restart_policy:
         condition: on-failure
         delay: 10s
@@ -34,7 +34,7 @@ services:
     depends_on:
       - mysql
     deploy:
-      replicas: 3
+      mode: global
       restart_policy:
         condition: on-failure
         delay: 15s
@@ -49,7 +49,7 @@ services:
       - "2223:2223"
       - "30000-31000:30000-31000/udp"
     deploy:
-      replicas: 3
+      mode: global
       resources:
         limits:
           cpus: "0.1"
@@ -58,7 +58,7 @@ services:
   webphone-source:
     image: debian:8.0
     deploy:
-      replicas: 3
+      mode: global
       resources:
         limits:
           cpus: "0.1"
@@ -71,7 +71,7 @@ services:
       - "80:80"
       - "443:443"
     deploy:
-      replicas: 3
+      mode: global
       restart_policy:
         condition: on-failure
         delay: 15s
@@ -90,7 +90,7 @@ services:
 #    ports:
 #      - ""
     deploy:
-      replicas: 3
+      mode: global
       restart_policy:
         condition: on-failure
         delay: 15s
