@@ -45,8 +45,9 @@ services:
 
   rtpengine:
     image: saycel/rtpengine:latest
-#    ports:
-#      - ""
+    ports:
+      - "2223:2223"
+      - "30000-31000:30000-31000/udp"
     deploy:
       replicas: 3
       resources:
