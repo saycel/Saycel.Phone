@@ -29,4 +29,5 @@ ADD	config-files/run.sh /
 
 RUN	chmod +x /run.sh
 
+EXPOSE 30000-31000
 ENTRYPOINT	["/run.sh"]
