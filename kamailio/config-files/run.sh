@@ -4,16 +4,17 @@
 sed -i "s/rhizortc.specialstories.org/$DOMAIN/g" /etc/kamailio/*
 sed -i "s/kamailio_mysql/kamailio_mysql.saycelphone_default/g" /etc/kamailio/*
 sed -i "s/localhost\/kamailio/kamailio_mysql.saycelphone_default\/kamailio/g" /etc/kamailio/*
-# find ping for rtpengine and insert into config files.
-rtpengine_ip=$(ping -c 1 rtpengine)
-rtpengine_ip_1=$(awk -F')' '{print $1}' <<< $rtpengine_ip)
-rtpengine_ip_2=$(awk -F'(' '{print $2}' <<< $rtpengine_ip_1)
-sed -i "s/127.0.0.1/$rtpengine_ip_2/g" /etc/kamailio/*
+
+export PRIVATE_IPV4="${PRIVATE_IPV4:-$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)}"
+
+sed -i "s/127.0.0.1/$PRIVATE_IPV4/g" /etc/kamailio/*
 while ! mysqladmin ping -h "kamailio_mysql" --silent; do
     sleep 1
 done
-kamdbctl create <<< $MYSQL_ROOT_PASSWORD & wait
-./permissions.sh & wait
-kamctl add webrtc verysecret & wait
+
+kamdbctl create <<< $MYSQL_ROOT_PASSWORD
+./permissions.sh
+kamctl add webrtc verysecret
+
 service kamailio start
 tail -f /dev/null

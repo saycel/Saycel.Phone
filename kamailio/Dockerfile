@@ -1,12 +1,11 @@
 FROM 	debian:8.0
 
-RUN 	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com \
-	0xfb40d3e6508ea4c8
-
+# Adds Kamailio repositories.
+RUN 	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xfb40d3e6508ea4c8
 ADD 	config-files/kamailio.list /etc/apt/sources.list.d/kamailio.list
-
 ADD 	config-files/policy-rc.d /usr/sbin/policy-rc.d
 
+# Installs dependencies.
 RUN 	apt-get update &&\
 	apt-get install -y \
 	kamailio \
@@ -17,21 +16,17 @@ RUN 	apt-get update &&\
 	kamailio-sctp-modules \
 	kamailio-outbound-modules \
 	kamailio-extra-modules \
-	kamailio-utils-modules
+	kamailio-utils-modules &&\
+        apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Adds Config files
 ADD	config-files/kamctlrc /etc/kamailio/kamctlrc
-
 ADD	config-files/kamailio.cfg /etc/kamailio/kamailio.cfg
-
 ADD	config-files/kamailio /etc/default/kamailio
-
 ADD	config-files/tls.cfg /etc/kamailio/tls.cfg
-
 ADD	config-files/permissions.sh /
-
 ADD	config-files/run.sh /
 
-RUN	chmod +x /permissions.sh &&\
-	chmod +x /run.sh
+RUN	chmod +x /permissions.sh && chmod +x /run.sh
 
 ENTRYPOINT	["/run.sh"]
