@@ -1,57 +1,30 @@
 FROM	debian:8.0
+LABEL maintainer="Nicolas Pace <nico@libre.ws>"
 
-ADD 	policy-rc.d /usr/sbin/policy-rc.d
+ARG VERSION=mr5.1.2.1
 
-ADD 	run.sh /
+ADD 	config-files/policy-rc.d /usr/sbin/policy-rc.d
 
-RUN 	chmod +x ./run.sh &&\
-	apt-get update &&\
-	apt-get install -y git &&\
-	git clone --recursive https://github.com/sipwise/rtpengine.git rtpengine &&\
-	cd /rtpengine &&\
-	apt-get install -y dpkg-dev &&\
+ENV DEBIAN_FRONTEND noninteractive
+
+# Dependencies install
+RUN 	apt-get update &&\
+        apt-get install -y --no-install-recommends apt-utils &&\
+	apt-get install -y git dpkg-dev debhelper iptables-dev libavcodec-dev libavfilter-dev libavformat-dev libavresample-dev libavutil-dev libcurl4-openssl-dev libevent-dev libglib2.0-dev libhiredis-dev libpcap-dev libpcre3-dev libssl-dev libxmlrpc-core-c3-dev markdown zlib1g-dev dkms module-assistant nfs-common netcat libbencode-perl libcrypt-rijndael-perl libdigest-hmac-perl libio-socket-inet6-perl libsocket6-perl libmysqlclient-dev libjson-glib-dev &&\
+        apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Compile and Install RTPEngine
+RUN	git clone --recursive https://github.com/sipwise/rtpengine.git -b $VERSION rtpengine &&\
+	cd rtpengine &&\
 	./debian/flavors/no_ngcp &&\
-	apt-get install -y \
-	debhelper \
-	iptables-dev \
-	libavcodec-dev \
-	libavfilter-dev \
-	libavformat-dev \
-	libavresample-dev \
-	libavutil-dev \
-	libcurl4-openssl-dev \
-	libevent-dev \
-	libglib2.0-dev \
-	libhiredis-dev \
-	libpcap-dev \
-	libpcre3-dev \
-	libssl-dev \
-	libxmlrpc-core-c3-dev \
-	markdown \
-	zlib1g-dev &&\
-	apt-get install -y \
-	libmysqlclient-dev \
-	libjson-glib-dev &&\
-	cd /rtpengine/ &&\
 	dpkg-buildpackage -rfakeroot -us -uc &&\
-	apt-get install -y dkms \
-	module-assistant \
-	nfs-common \
-	netcat \
-	libbencode-perl \
-	libcrypt-rijndael-perl \
-	libdigest-hmac-perl \
-	libio-socket-inet6-perl \
-	libsocket6-perl &&\
-	cd .. &&\
-	dpkg -i *.deb &&\
+        ls
+RUN	dpkg -i *.deb &&\
 	apt-get -f install
 
-
+# Config copy
 ADD	config-files/rtpengine.conf /etc/rtpengine/rtpengine.conf
-
 ADD	config-files/ngcp-rtpengine-daemon /etc/default/ngcp-rtpengine-daemon
-
 ADD	config-files/run.sh /
 
 RUN	chmod +x /run.sh
