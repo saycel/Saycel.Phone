@@ -9,7 +9,7 @@ RUN	apt-get update &&\
 	curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN	apt-get update &&\
 	apt-get upgrade -y &&\
-	apt-get install -y nodejs git apache2 curl #python-certbot-apache -t jessie-backports
+	apt-get install -y nodejs git apache2 curl
 
 # Apache config
 ADD	000-default.conf /etc/apache2/sites-enabled/000-default.conf
@@ -17,8 +17,7 @@ ADD	apache2.conf /etc/apache2/apache2.conf
 ADD	ports.conf /etc/apache2/ports.conf
 RUN	a2enmod rewrite &&\
 	a2enmod proxy_http &&\
-	a2enmod proxy_html &&\
-	a2enmod ssl
+	a2enmod proxy_html
 
 ADD webph.one-$VERSION.tar.gz /var/www/html/
 
