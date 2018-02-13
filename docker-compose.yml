@@ -1,107 +1,31 @@
-version: '3'
+version: '2'
 services:
 
   mysql:
     image: mysql:latest
-    hostname: kamailio_mysql
-    ports:
-      - "3306:3306"
-    env_file:
-      - .env
-    deploy:
-      mode: global
-      restart_policy:
-        condition: on-failure
-        delay: 10s
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 500M
+    environment:
+      - MYSQL_ROOT_PASSWORD
 
   kamailio:
-    image: saycel/kamailio:latest
-    hostname: kamailio
-    ports:
-      - "127.0.0.1:5060:5060/udp"
-      - "127.0.0.1:5060:5060/tcp"
-      - "127.0.0.1:880:880/tcp"
-      - "5061:5061"
-      - "8443:8443"
-    env_file:
-      - .env
-    volumes:
-      - certs:/etc/letsencrypt/live:ro
-    depends_on:
-      - mysql
-    deploy:
-      mode: global
-      restart_policy:
-        condition: on-failure
-        delay: 15s
-      resources:
-        limits:
-          cpus: "0.4"
-          memory: 50M
+    build: ./kamailio
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - SIP_DOMAIN
+      - DBNAME
+      - DBRWUSER
+      - DBRWPW
+      - DBROUSER
+      - DBROPW
 
   rtpengine:
-    image: saycel/rtpengine:latest
+    build: ./rtpengine
     ports:
-      - "2223:2223"
       - "30000-31000:30000-31000/udp"
-    deploy:
-      mode: global
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
-
-  webphone-source:
-    image: debian:8.0
-    deploy:
-      mode: global
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
 
   webphone:
-    image: saycel/webserver:experimental
-    hostname: webphone
+    build: ./webphone
     ports:
       - "80:80"
       - "443:443"
-    deploy:
-      mode: global
-      restart_policy:
-        condition: on-failure
-        delay: 15s
-      resources:
-        limits:
-          cpus: "0.2"
-          memory: 100M
-    env_file:
-      - .env
-    depends_on:
-      - webphone-source 
-
-  webpush:
-    image: saycel/webpush:latest
-    hostname: webpush
-#    ports:
-#      - ""
-    deploy:
-      mode: global
-      restart_policy:
-        condition: on-failure
-        delay: 15s
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
-    env_file:
-      - .env
-#    depends_on:
-#      - 
-
-volumes:
-  certs:
+    environment:
+      - DOMAIN=$SIP_DOMAIN
