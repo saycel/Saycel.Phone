@@ -1,5 +1,5 @@
 FROM 	debian:8.0
-ARG VERSION=32392a7dbbd858b94d277c1f3d5376bbdaa6a60c
+ARG VERSION=2f8de4d8d3037bcd5aaf16bfeaee2c7335cee632
 
 # Adds Kamailio repositories.
 RUN 	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xfb40d3e6508ea4c8
