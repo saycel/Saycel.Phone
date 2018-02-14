@@ -19,7 +19,7 @@ The client module is a Progressive-web-app (PWA) that is served by apache.
 
 # Architecture
 
-![architecture diagram](https://raw.githubusercontent.com/saycel/webph.one-server/master/docs/images/architecture.png)
+![architecture diagram](https://raw.githubusercontent.com/saycel/Saycel.Phone/master/docs/images/architecture.png)
 
 This describes the main relations between the modules of the system:
 * The apache web server, using the LetsEncrypt SSL Certificate, exposes a public secure web service that serves the webph.one PWA in a certain DNS domain (for example https://example.webph.one/).
