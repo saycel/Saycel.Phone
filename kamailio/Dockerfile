@@ -32,4 +32,9 @@ RUN	chmod +x /permissions.sh && chmod +x /run.sh &&\
         mv /etc/kamailio/kamailio-local.cfg.sample /etc/kamailio/kamailio-local.cfg &&\
         ./customize-config.sh
 
+EXPOSE 5060
+EXPOSE 5061/tcp
+EXPOSE 5080/tcp
+EXPOSE 880/tcp
+EXPOSE 8443/tcp
 ENTRYPOINT	["/run.sh"]

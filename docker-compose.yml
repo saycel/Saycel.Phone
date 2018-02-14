@@ -16,6 +16,12 @@ services:
       - DBRWPW
       - DBROUSER
       - DBROPW
+    ports:
+      - "5060"
+      - "5061/tcp"
+      - "5080/tcp"
+      - "880/tcp"
+      - "8443/tcp"
 
   rtpengine:
     build: ./rtpengine
