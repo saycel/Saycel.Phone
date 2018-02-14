@@ -21,8 +21,7 @@ RUN	a2enmod rewrite &&\
 	a2enmod proxy_html
 
 ADD webph.one-$VERSION.tar.gz /var/www/html/
-
-RUN     sed -i "s/rhizortc.specialstories.org/$DOMAIN/g" /var/www/html/main.*.bundle.js
+ADD run.sh /
 
 EXPOSE 80/tcp
-CMD ["apache2ctl" , "-D" , "FOREGROUND"]
+CMD ["/run.sh"]
