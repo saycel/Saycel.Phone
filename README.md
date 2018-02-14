@@ -19,7 +19,7 @@ The client module is a Progressive-web-app (PWA) that is served by apache.
 
 # Architecture
 
-![architecture diagram](https://raw.githubusercontent.com/nicopace/webph.one-server/master/docs/images/architecture.png)
+![architecture diagram](https://raw.githubusercontent.com/saycel/webph.one-server/master/docs/images/architecture.png)
 
 This describes the main relations between the modules of the system:
 * The apache web server, using the LetsEncrypt SSL Certificate, exposes a public secure web service that serves the webph.one PWA in a certain DNS domain (for example https://example.webph.one/).
@@ -42,7 +42,7 @@ In order to run the system, you will need docker-compose installed.
 Clone the repository by doing:
 
 ```bash
-git clone --recursive https://github.com/saycel/Saycel.Phone.git
+git clone https://github.com/saycel/Saycel.Phone.git
 ```
 
 There is still some manual copy of the kamailio configuration files that need to happen, fetch them here: https://github.com/saycel/kamailio-config
@@ -66,4 +66,4 @@ This system is based on many components:
 * https://github.com/saycel/webph.one
 * https://github.com/saycel/webpush-server
 * https://github.com/saycel/kamailio-config
-* https://github.com/nicopace/allocatenumber-server
+* https://github.com/saycel/allocatenumber-server
