@@ -29,8 +29,8 @@ ADD	config-files/customize-config.sh /
 RUN     cd /tmp; curl -sL https://github.com/saycel/kamailio-config/archive/$VERSION.tar.gz | tar xvfz -; cp /tmp/kamailio-config-*/* /etc/kamailio/
 
 RUN	chmod +x /permissions.sh && chmod +x /run.sh &&\
-        mv /etc/kamailio/kamailio-local.cfg.sample /etc/kamailio/kamailio-local.cfg &&\
-        ./customize-config.sh
+        mv /etc/kamailio/kamailio-local.cfg.sample /etc/kamailio/kamailio-local.cfg.buildtime &&\
+        ./customize-config.sh /etc/kamailio/kamailio-local.cfg.buildtime
 
 EXPOSE 5060
 EXPOSE 5061/tcp
