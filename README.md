@@ -25,7 +25,7 @@ This describes the main relations between the modules of the system:
 * The apache web server, using the LetsEncrypt SSL Certificate, exposes a public secure web service that serves the webph.one PWA in a certain DNS domain (for example https://example.webph.one/).
 * When a user gets to the url https://example.webph.one/ using his web browser, he installs the PWA as an app in his phone.
 * If it is the PWA's first run, it will request the allocatenumber-server a phone number for that device, so he can use that to call and be called.
-* The allocatenumber-server will save in MySQL Database all information regarding new numbers registered and the credentials the phone uses to identify them.
+* The allocatenumber-server will talk to Kamailio and save all information regarding new numbers registered and the credentials the phone uses to identify them.
 * The PWA will connect to the Kamailio SIP Server and register with Google Push Notifications Service to receive notifications of incoming calls.
 * The Kamailio SIP Server will talk with the MySQL Database to check the credentials of the connected user.
 * When the user triggers a call, a message is sent to Kamailio to notify the other callee that is being called.
