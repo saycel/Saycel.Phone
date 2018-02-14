@@ -24,6 +24,7 @@ services:
       - MY_RTPENGINE_IP_PORT=udp:rtpengine:2223
       - PRIVATE_KEY_PATH
       - CERTIFICATE_PATH
+      - DEBUG_LEVEL=2
     ports:
       - "5060"
       - "5061/tcp"

@@ -1,5 +1,4 @@
 FROM 	debian:8.0
-ARG VERSION=2f8de4d8d3037bcd5aaf16bfeaee2c7335cee632
 
 # Adds Kamailio repositories.
 RUN 	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xfb40d3e6508ea4c8
@@ -26,6 +25,8 @@ ADD	config-files/kamctlrc /etc/kamailio/kamctlrc
 ADD	config-files/permissions.sh /
 ADD	config-files/run.sh /
 ADD	config-files/customize-config.sh /
+
+ARG VERSION=4bf30e0410ec65810a0ef411b097fe68b53c60b9
 RUN     cd /tmp; curl -sL https://github.com/saycel/kamailio-config/archive/$VERSION.tar.gz | tar xvfz -; cp /tmp/kamailio-config-*/* /etc/kamailio/
 
 RUN	chmod +x /permissions.sh && chmod +x /run.sh &&\

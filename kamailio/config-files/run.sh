@@ -1,6 +1,7 @@
 #! /bin/bash
 
-export MY_IP_ADDRESS="${PRIVATE_IPV4:-$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)}"
+export MY_IP_ADDR="${PRIVATE_IPV4:-$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)}"
+
 cp /etc/kamailio/kamailio-local.cfg.buildtime /etc/kamailio/kamailio-local.cfg
 ./customize-config.sh /etc/kamailio/kamailio-local.cfg
 
