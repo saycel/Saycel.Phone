@@ -20,7 +20,7 @@ services:
       - MY_WS_PORT=880
       - MY_WSS_PORT=8443
       - MY_PUSH_NOTIF_URL=http:\/\/127.0.0.1:3000
-      - DBURL=mysql:\/\/kamailio:kamailiorw@mysql\/kamailio
+      - DBURL_REP=mysql:\/\/kamailio:kamailiorw@mysql\/kamailio
       - MY_RTPENGINE_IP_PORT=udp:rtpengine:2223
       - PRIVATE_KEY_PATH
       - CERTIFICATE_PATH
@@ -29,6 +29,10 @@ services:
       - "5061/tcp"
       - "880/tcp"
       - "8443/tcp"
+    links:
+      - mysql
+      - rtpengine
+      - webpush-server
 
   rtpengine:
     build: ./rtpengine
