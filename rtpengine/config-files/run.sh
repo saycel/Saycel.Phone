@@ -49,5 +49,5 @@ OPTIONS="$OPTIONS --table=$TABLE"
 
 OPTIONS="$OPTIONS --foreground"
 
-echo $OPTIONS
-rtpengine $OPTIONS
+echo rtpengine $OPTIONS --config-file=/etc/rtpengine/rtpengine.conf
+rtpengine $OPTIONS --config-file=/etc/rtpengine/rtpengine.conf
