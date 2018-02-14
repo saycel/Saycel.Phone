@@ -10,12 +10,20 @@ services:
     build: ./kamailio
     environment:
       - MYSQL_ROOT_PASSWORD
-      - SIP_DOMAIN
       - DBNAME
       - DBRWUSER
       - DBRWPW
       - DBROUSER
       - DBROPW
+      - SIP_DOMAIN=dev.webph.one
+      - MY_DOMAIN=dev.webph.one
+      - MY_WS_PORT=880
+      - MY_WSS_PORT=8443
+      - MY_PUSH_NOTIF_URL=http:\/\/127.0.0.1:3000
+      - DBURL=mysql:\/\/kamailio:kamailiorw@mysql\/kamailio
+      - MY_RTPENGINE_IP_PORT=udp:rtpengine:2223
+      - PRIVATE_KEY_PATH
+      - CERTIFICATE_PATH
     ports:
       - "5060"
       - "5061/tcp"
@@ -25,6 +33,7 @@ services:
   rtpengine:
     build: ./rtpengine
     ports:
+      - "2223"
       - "30000-31000:30000-31000/udp"
 
   webphone:

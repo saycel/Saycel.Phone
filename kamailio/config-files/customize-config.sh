@@ -1,6 +1,6 @@
 #! /bin/bash
 
-CONF_FILE=/etc/kamailio/kamailio-local.cfg
+CONF_FILE=$1
 
 ENV_VARS=`cat $CONF_FILE | grep \#! | cut --complement -b 1-13 | cut -d! -f 1`
 
