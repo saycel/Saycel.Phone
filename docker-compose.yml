@@ -22,9 +22,11 @@ services:
       - MY_PUSH_NOTIF_URL=http:\/\/127.0.0.1:3000
       - DBURL_REP=mysql:\/\/kamailio:kamailiorw@mysql\/kamailio
       - MY_RTPENGINE_IP_PORT=udp:rtpengine:2223
-      - PRIVATE_KEY_PATH
-      - CERTIFICATE_PATH
+      - PRIVATE_KEY_PATH=\/certificates\/cert.key
+      - CERTIFICATE_PATH=\/certificates\/cert.crt
       - DEBUG_LEVEL=2
+    volumes:
+      - ./certificates:/certificates
     ports:
       - "5060"
       - "5061/tcp"
@@ -48,6 +50,8 @@ services:
       - "443:443"
     environment:
       - DOMAIN=$SIP_DOMAIN
+    volumes:
+      - ./certificates:/certificates
 
   webpush-server:
     image: saycel/webpush-server

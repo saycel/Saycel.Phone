@@ -16,6 +16,7 @@ ADD	000-default.conf /etc/apache2/sites-enabled/000-default.conf
 ADD	apache2.conf /etc/apache2/apache2.conf
 ADD	ports.conf /etc/apache2/ports.conf
 RUN	a2enmod rewrite &&\
+	a2enmod ssl &&\
 	a2enmod proxy_http &&\
 	a2enmod proxy_html
 
