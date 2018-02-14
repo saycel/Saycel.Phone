@@ -29,3 +29,11 @@ services:
       - "443:443"
     environment:
       - DOMAIN=$SIP_DOMAIN
+
+  webpush-server:
+    image: saycel/webpush-server
+    environment:
+      - PUSH_PUBLIC
+      - PUSH_PRIVATE
+      - PUSH_PORT
+      - PUSH_SECRET
