@@ -4,13 +4,13 @@ TABLE=0
 if [ -z "$INTERFACES" ]; then
     export PRIVATE_IPV4="${PRIVATE_IPV4:-$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)}"
 
-    [ -n "$PUBLIC_IPV4" ] || \
-        PUBLIC_IPV4="$(curl --fail -qs whatismyip.akamai.com)"
-    export PUBLIC_IPV4
+    # [ -n "$PUBLIC_IPV4" ] || \
+    #     PUBLIC_IPV4="$(curl --fail -qs whatismyip.akamai.com)"
+    # export PUBLIC_IPV4
 
     export PUBLIC_IPV6="${PUBLIC_IPV6:-$(ip -6 addr show $(ip -6 route show default | grep -e '^default' | awk '{print $5}') | grep inet6 | grep global | awk '{print $2}' | grep -v -e '^::' | cut -d/ -f1)}"
 
-    INTERFACES="${PRIVATE_IPV4}!${PUBLIC_IPV4} ${PUBLIC_IPV6}"
+    INTERFACES="${PRIVATE_IPV4} ${PUBLIC_IPV6}"
 fi
 
 for interface in $INTERFACES; do
