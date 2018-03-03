@@ -45,10 +45,14 @@ Clone the repository by doing:
 git clone https://github.com/saycel/Saycel.Phone.git
 ```
 
-There is still some manual copy of the kamailio configuration files that need to happen, fetch them here: https://github.com/saycel/kamailio-config
-
 The configuration of the system is stored in a file called .env.
 A dot-env file is provided as example, please copy it to .env and customize before running.
+You need to provide a ./certificates directory with the SSL certs like this:
+```
+./certificates/privkey.pem
+./certificates/fullchain.pem
+
+```
 
 ```bash
 cp dot-env .env
