@@ -15,23 +15,24 @@ services:
       - DBRWPW
       - DBROUSER
       - DBROPW
-      - SIP_DOMAIN=dev.webph.one
-      - MY_DOMAIN=dev.webph.one
-      - MY_WS_PORT=880
-      - MY_WSS_PORT=8443
-      - MY_PUSH_NOTIF_URL=http:\/\/127.0.0.1:3000
-      - DBURL_REP=mysql:\/\/kamailio:kamailiorw@mysql\/kamailio
-      - MY_RTPENGINE_IP_PORT=udp:rtpengine:2223
-      - PRIVATE_KEY_PATH=\/certificates\/cert.key
-      - CERTIFICATE_PATH=\/certificates\/cert.crt
-      - DEBUG_LEVEL=2
+      - SIP_DOMAIN
+      - MY_DOMAIN
+      - DOMAIN
+      - MY_WS_PORT
+      - MY_WSS_PORT
+      - MY_PUSH_NOTIF_URL
+      - DBURL_REP
+      - MY_RTPENGINE_IP_PORT
+      - PRIVATE_KEY_PATH
+      - CERTIFICATE_PATH
+      - DEBUG_LEVEL
     volumes:
       - ./certificates:/certificates
     ports:
-      - "5060"
-      - "5061/tcp"
-      - "880/tcp"
-      - "8443/tcp"
+      - "5060:5060"
+      - "5061:5061"
+      - "880:880"
+      - "8443:8443"
     links:
       - mysql
       - rtpengine
@@ -40,7 +41,6 @@ services:
   rtpengine:
     build: ./rtpengine
     ports:
-      - "2223"
       - "30000-31000:30000-31000/udp"
 
   webphone:
@@ -49,7 +49,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - DOMAIN=$SIP_DOMAIN
+      - DOMAIN
     volumes:
       - ./certificates:/certificates
 
